@@ -7,4 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'WKTechnology';
+  currentItem = [ "id", "first", "last", "actions"  ];
+  rows = [
+    {
+      id: 1,
+      first: "arleilson",
+      last: "carneiro",
+    },
+    {
+      id: 2,
+      first: "odilomar",
+      last: "junior",
+    },
+  ]
 }

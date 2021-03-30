@@ -1,42 +1,33 @@
 <table class="table table-striped table-hover table-bordered border-primary">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">First</th>
-      <th scope="col">Last</th>
-      <th scope="col">Handle</th>
+      <th *ngFor="let column of item">
+        {{ column }}
+      </th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry the Bird</td>
-      <td>Thornton</td>
-      <td>@twitter</td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-    </tr>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
+    <tr *ngFor="let line of row">
+      <td>
+        {{ line.id }}
+      </td>
+      <td>
+        {{ line.first }}
+      </td>
+      <td>
+        {{ line.last }}
+      </td>
+      <td>
+        <button
+          type="button"
+          class="btn"
+          [ngClass]="{'btn-primary':!line.selected, 'btn-danger': line.selected}"
+          (click)="reverse(line.id)"
+        >
+        <span *ngIf="!line.selected">ADD+</span>
+        <span *ngIf="line.selected">remove-</span>
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
