@@ -1,4 +1,4 @@
-<table class="table table-striped table-hover table-bordered border-primary">
+ <table class="table table-striped table-hover table-bordered border-primary">
   <thead>
     <tr>
       <th *ngFor="let column of item">
@@ -8,14 +8,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let line of row">
-      <td>
+      <td *ngIf="line.id" >
         {{ line.id }}
       </td>
-      <td>
-        {{ line.first }}
-      </td>
-      <td>
-        {{ line.last }}
+      <td *ngIf="line.name" >
+        {{ line.name }}
+      <td *ngIf="line.price" >
+        {{ line.price }}
       </td>
       <td>
         <button

@@ -4,11 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BaseComponent } from './components/template/base/base.component';
+import { ListingComponent } from './product/listing/listing.component';
+import { ListingOrderComponent } from './order/listing-order/listing-order.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BaseComponent
+    BaseComponent,
+    ListingComponent,
+    ListingOrderComponent
   ],
   imports: [
     BrowserModule,

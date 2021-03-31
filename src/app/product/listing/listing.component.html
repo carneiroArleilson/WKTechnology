@@ -1,0 +1,17 @@
+<div class="m-5">
+  <div class="d-flex justify-content-between" >
+    <button><i class="material-icons">arrow_back</i></button>
+    <p class="m-0 fs-4" >Listagem de Produtos</p>
+    <button class="" ><i class="material-icons" >queue</i></button>
+  </div>
+
+  <app-base
+    [item]="currentItem"
+    [row]="rows"
+    (newItemEvent)="addItem($event)"
+  ></app-base>
+  <div class="d-flex justify-content-between" >
+    <h2>Total: {{total}} </h2>
+    <button>Comprar</button>
+  </div>
+</div>

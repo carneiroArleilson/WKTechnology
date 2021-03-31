@@ -1,12 +1,11 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit, Input } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 
 export interface Line {
   id: number;
-  first: string;
-  last: string;
   selected?: boolean;
+  price?: number;
+  name?: string;
 }
 
 @Component({
@@ -37,18 +36,6 @@ export class BaseComponent implements OnInit {
     this.addNewItem();
   }
 
-
-  // var alunosDeMaior = [];
-
-  // for(var i = 0; i < alunos.length; i++){
-  //  var aluno = alunos[i];
-  //  if(aluno.idade >= 18) alunosDeMaior.push(aluno);
-  // }
-  // console.log(alunosDeMaior);
-
-  // var alunosDeMaior = alunos.filter(function(aluno){
-  //   return aluno.idade >= 18;
-  // });
 
   addNewItem() {
       const analise = this.row.filter(function(rows){

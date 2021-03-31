@@ -1,0 +1,23 @@
+<div class="m-5">
+  <div class="d-flex flex-column" >
+    <div class="d-flex " >
+      <button><i class="material-icons">arrow_back</i></button>
+      <p class="m-0 fs-4" >Pedido</p>
+    </div>
+    <div class="d-flex justify-content-between" >
+      <select class=" d-flex " >
+        <option value="name" >name</option>
+      </select>
+      <h2>Total:</h2>
+    </div>
+  </div>
+
+  <app-base
+    [item]="currentItem"
+    [row]="rows"
+    (newItemEvent)="addItem($event)"
+  ></app-base>
+  <div class="d-flex justify-content-end" >
+    <button>Finalizar</button>
+  </div>
+</div>
