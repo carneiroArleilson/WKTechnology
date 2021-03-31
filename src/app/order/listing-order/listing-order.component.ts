@@ -13,6 +13,7 @@ export class ListingOrderComponent implements OnInit {
   total = 0;
   items: Array<Line> = [];
   currentItem = ['id', 'name', 'preço', 'action'];
+  clients = [ "Arleilson", "Odilomar", "João", "Pedro" ];
 
   rows: Line[] = [];
 
@@ -22,7 +23,7 @@ export class ListingOrderComponent implements OnInit {
     this.dataService.castOrder.subscribe(order => {
       this.rows = order.products;
       this.total = order.total;
-    })
+    });
   }
 
   addItem(newItem: Array<Line>) {
