@@ -6,6 +6,10 @@ import { AppComponent } from './app.component';
 import { BaseComponent } from './components/template/base/base.component';
 import { ListingComponent } from './product/listing/listing.component';
 import { ListingOrderComponent } from './order/listing-order/listing-order.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule } from '@angular/forms';
+
+
 
 @NgModule({
   declarations: [
@@ -16,7 +20,9 @@ import { ListingOrderComponent } from './order/listing-order/listing-order.compo
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

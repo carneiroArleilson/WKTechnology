@@ -4,9 +4,14 @@ import { ListingOrderComponent } from './order/listing-order/listing-order.compo
 import { ListingComponent } from './product/listing/listing.component';
 
 const routes: Routes = [
+  // {
+  //   path: '**',
+  //   redirectTo: "/products",
+  //   pathMatch: "full"
+  // },
   {
-    path: '**',
-    redirectTo: "/products",
+    path: '',
+    redirectTo: '/products',
     pathMatch: "full"
   },
   {

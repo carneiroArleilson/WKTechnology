@@ -1,8 +1,10 @@
 <div class="m-5">
-  <div class="d-flex justify-content-between" >
-    <button><i class="material-icons">arrow_back</i></button>
-    <p class="m-0 fs-4" >Listagem de Produtos</p>
-    <button class="" ><i class="material-icons" >queue</i></button>
+  <div class="d-flex justify-content-between">
+    <button class="btn"><i class="material-icons">arrow_back</i></button>
+    <p class="m-0 fs-4">Listagem de Produtos</p>
+    <button class="btn" (click)="open(content)" data-toggle="modal" data-target="#exampleModal">
+      <i class="material-icons">queue</i>
+    </button>
   </div>
 
   <app-base
@@ -10,8 +12,42 @@
     [row]="rows"
     (newItemEvent)="addItem($event)"
   ></app-base>
-  <div class="d-flex justify-content-between" >
-    <h2>Total: {{total}} </h2>
-    <button>Comprar</button>
+  <div class="d-flex justify-content-between">
+    <h2>Total: {{ total }}</h2>
+    <!-- <button><a href="" routerLink="/order" routerLinkActive="selected" >Comprar</a></button> -->
+    <button
+      class="btn btn-primary"
+      [ngClass]="{ disabled: items.length === 0 }"
+      (click)="order()"
+    >
+      Comprar
+    </button>
   </div>
 </div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <label for="dateOfBirth">nome do produto</label>
+        <div class="input-group">
+          <input id="dateOfBirth" [(ngModel)]="product.name" class="form-control" name="name" ngbDatepicker #dp="ngbDatepicker">
+        </div>
+        <label for="dateOfBirth">preço</label>
+        <div class="input-group">
+          <input id="dateOfBirth" [(ngModel)]="product.price" class="form-control" placeholder="R$" name="price" ngbDatepicker #dp="ngbDatepicker">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="incluirCenario()">Save</button>
+  </div>
+</ng-template>
+
