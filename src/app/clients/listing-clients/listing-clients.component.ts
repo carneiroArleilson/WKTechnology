@@ -82,7 +82,7 @@ export class ListingClientsComponent implements OnInit, OnDestroy {
     const ender = this.product.ender || '';
     const email = this.product.email || '';
     const nasc =
-      new Date(`${this.nasc.year}/${this.nasc.month}/${this.nasc.day}/`) ||
+      new Date(`${this.nasc.year}/${this.nasc.month}/${this.nasc.day}`) ||
       new Date();
 
     if (name === '') {
@@ -109,19 +109,20 @@ export class ListingClientsComponent implements OnInit, OnDestroy {
       alert('Email não é válido!');
       return;
     }
-    // if(nasc === '') {
-    //   alert('Data de Nascimento está vazio!');
-    //   return;
-    // }
 
-    this.rows.push({
+    const newClient = {
       name,
       cpf,
       ender,
       email,
       nasc,
       id: newID,
-    });
+    };
+
+    this.rows.push(newClient);
+    this.clientService.addClient(newClient);
+    this.refresh();
+
     this.modalService.dismissAll();
   }
 
