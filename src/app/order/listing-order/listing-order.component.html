@@ -22,6 +22,6 @@
     (newItemEvent)="addItem($event)"
   ></app-base>
   <div class="d-flex justify-content-end" >
-    <button class="btn btn-success" (click)="finish()">Finalizar</button>
+    <button class="btn btn-success" [ngClass]="{ disabled: client.length === 0 }" (click)="finish()">Finalizar</button>
   </div>
 </div>

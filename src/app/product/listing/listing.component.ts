@@ -18,7 +18,7 @@ export class ListingComponent implements OnInit, OnDestroy {
   total = 0;
   items: Array<Line> = [];
   subscribe: Subscription = new Subscription();
-  currentItem = ['id', 'name', 'preço', 'action'];
+  currentItem = ['id', 'nome', 'preço', 'ação'];
   product: Line = {
     id: 0,
     name: '',

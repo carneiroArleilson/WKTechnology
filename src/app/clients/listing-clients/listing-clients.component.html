@@ -16,7 +16,7 @@
 
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Novo cliente</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -45,8 +45,6 @@
           <input id="dateOfBirth" [(ngModel)]="nasc" class="form-control" type="date" placeholder="dd/mm/aaaa" name="nasc" ngbDatepicker #dp="ngbDatepicker">
         </div>
       </div>
-
-      <button type="submit"  class="btn btn-outline-dark"  (click)="incluirClient()">Save</button>
     </form>
     </div>
     <div class="modal-footer">

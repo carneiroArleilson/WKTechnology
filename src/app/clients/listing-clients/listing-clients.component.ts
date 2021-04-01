@@ -21,7 +21,7 @@ export class ListingClientsComponent implements OnInit, OnDestroy {
   total = 0;
   items: Array<Line> = [];
   subscribe = new Subscription();
-  currentItem = ['id', 'name', 'cpf', 'ender', 'email', 'nasc', 'action'];
+  currentItem = ['id', 'nome', 'cpf', 'endereço', 'e-mail', 'nascimento', 'ação'];
   nasc = {
     year: 0,
     month: 0,

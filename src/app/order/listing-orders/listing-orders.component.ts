@@ -19,7 +19,7 @@ export class ListingOrdersComponent implements OnInit, OnDestroy {
   total = 0;
   items: Array<Line> = [];
   subscription: Subscription = new Subscription();
-  currentItem = ['id', 'name', 'items', 'price', 'data', 'action'];
+  currentItem = ['id', 'nome', 'itens', 'preço', 'data', 'ação'];
   product: Line = {
     id: 0,
     name: '',
