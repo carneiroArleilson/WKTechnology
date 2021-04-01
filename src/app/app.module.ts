@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { MenuComponent } from './components/template/menu/menu.component';
 import { ListingOrdersComponent } from './order/listing-orders/listing-orders.component';
 import { ListingClientsComponent } from './clients/listing-clients/listing-clients.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from 'src/environments/environment.prod';
 
 
 
@@ -28,7 +31,9 @@ import { ListingClientsComponent } from './clients/listing-clients/listing-clien
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
