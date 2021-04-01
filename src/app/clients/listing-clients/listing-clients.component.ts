@@ -1,10 +1,12 @@
+import { Subscription } from 'rxjs';
 import { DataService, Order } from './../../data.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Line } from 'src/app/components/template/base/base.component';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { cpf } from 'cpf-cnpj-validator';
 import * as EmailValidator from 'email-validator';
+import { ClientsService } from 'src/app/service/clients.service';
 
 const { isValid } = cpf;
 
@@ -13,11 +15,12 @@ const { isValid } = cpf;
   templateUrl: './listing-clients.component.html',
   styleUrls: ['./listing-clients.component.css'],
 })
-export class ListingClientsComponent implements OnInit {
+export class ListingClientsComponent implements OnInit, OnDestroy {
   closeResult = '';
   title = 'WKTechnology';
   total = 0;
   items: Array<Line> = [];
+  subscribe = new Subscription();
   currentItem = ['id', 'name', 'cpf', 'ender', 'email', 'nasc', 'action'];
   nasc = {
     year: 0,
@@ -31,27 +34,46 @@ export class ListingClientsComponent implements OnInit {
     ender: '',
     email: '',
   };
-  rows = [
-    {
-      id: 1,
-      name: 'arleilson',
-      cpf: '03309392201',
-      ender: 'rua luiz antony',
-      email: 'carneiroarleilson@gmail.com',
-      nasc: new Date(),
-    },
-  ];
+  rows: Line[] = [];
 
   constructor(
     private dataServicevice: DataService,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private clientService: ClientsService
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.refresh();
+  }
+
+  ngOnDestroy() {
+    this.subscribe.unsubscribe();
+  }
+
+  refresh() {
+    this.subscribe = this.clientService.getClients().subscribe((clients) => {
+      const newRows: Line[] = [];
+
+      clients.map((client) => {
+        const { id, name, cpf, ender, email, nasc } = client as Line;
+        const newDate = nasc as any;
+        const row: Line = {
+          id,
+          name,
+          cpf,
+          ender,
+          email,
+          data: new Date(newDate.seconds),
+        };
+        newRows.push(row);
+      });
+
+      this.rows = newRows;
+    });
+  }
 
   incluirClient() {
-
     const sortedRows = this.rows.sort((a, b) => b.id - a.id);
     const newID = sortedRows[0].id + 1;
 
@@ -59,29 +81,31 @@ export class ListingClientsComponent implements OnInit {
     const cpf = this.product.cpf || '';
     const ender = this.product.ender || '';
     const email = this.product.email || '';
-    const nasc = new Date(`${this.nasc.year}/${this.nasc.month}/${this.nasc.day}/`) || new Date();
+    const nasc =
+      new Date(`${this.nasc.year}/${this.nasc.month}/${this.nasc.day}/`) ||
+      new Date();
 
-    if(name === '') {
+    if (name === '') {
       alert('Nome está vazio!');
       return;
     }
-    if(cpf === '') {
+    if (cpf === '') {
       alert('CPF está vazio!');
       return;
     }
-    if(!isValid(cpf)) {
+    if (!isValid(cpf)) {
       alert('CPF não é válido!');
       return;
     }
-    if(ender === '') {
+    if (ender === '') {
       alert('Endereço está vazio!');
       return;
     }
-    if(email === '') {
+    if (email === '') {
       alert('Email está vazio!');
       return;
     }
-    if(!EmailValidator.validate(email)) {
+    if (!EmailValidator.validate(email)) {
       alert('Email não é válido!');
       return;
     }

@@ -11,7 +11,7 @@ interface TimezoneFirebase {
 @Component({
   selector: 'app-listing-orders',
   templateUrl: './listing-orders.component.html',
-  styleUrls: ['./listing-orders.component.css']
+  styleUrls: ['./listing-orders.component.css'],
 })
 export class ListingOrdersComponent implements OnInit, OnDestroy {
   closeResult = '';
@@ -19,32 +19,32 @@ export class ListingOrdersComponent implements OnInit, OnDestroy {
   total = 0;
   items: Array<Line> = [];
   subscription: Subscription = new Subscription();
-  currentItem = ['id', 'name','items', 'price', 'data', 'action'];
+  currentItem = ['id', 'name', 'items', 'price', 'data', 'action'];
   product: Line = {
     id: 0,
     name: '',
-    items:'',
+    items: '',
     price: 0,
     data: new Date(),
   };
   rows: Line[] = [];
 
-
-  constructor(
-    private orderService: OrdersService
-    ) { }
+  constructor(private orderService: OrdersService) {}
 
   ngOnInit(): void {
-    this.subscription = this.orderService.getOrders().subscribe(orders => {
+    this.subscription = this.orderService.getOrders().subscribe((orders) => {
       const newRows: Line[] = [];
 
       orders.map((order) => {
-        const { id, name, items, price, data } =  order as Line;
+        const { id, name, items, price, data } = order as Line;
         const newDate = data as any;
         const row: Line = {
-          id, name, items, price,
-          data: new Date(newDate.seconds)
-        }
+          id,
+          name,
+          items,
+          price,
+          data: new Date(newDate.seconds),
+        };
         newRows.push(row);
       });
 
@@ -57,9 +57,8 @@ export class ListingOrdersComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  open(){};
-  addItem(){};
-  order(){};
-  incluirCenario(){};
-
+  open() {}
+  addItem() {}
+  order() {}
+  incluirCenario() {}
 }

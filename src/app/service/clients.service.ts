@@ -12,9 +12,7 @@ export class ClientsService {
   ) {}
 
   getClients() {
-    return this.storeService.getObservable(
-      this.firebaseStore.collection('clients')
-    );
+    return this.firebaseStore.collection('clients').valueChanges();
   }
 
   addClient(client: any) {
