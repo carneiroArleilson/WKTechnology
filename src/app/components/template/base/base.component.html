@@ -33,10 +33,10 @@
         {{ line.price }}
       </td>
       <td *ngIf="line.nasc" >
-        {{ line.nasc }}
+        {{ line.nasc  | date: 'dd/MM/yyyy'}}
       </td>
       <td *ngIf="line.data" >
-        {{ line.data }}
+        {{ line.data  | date: 'dd/MM/yyyy'}}
       </td>
       <td >
         <button

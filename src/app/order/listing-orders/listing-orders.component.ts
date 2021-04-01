@@ -17,7 +17,7 @@ export class ListingOrdersComponent implements OnInit {
     name: '',
     items:'',
     price: 0,
-    data: ''
+    data: new Date(),
   };
   rows = [
     {
@@ -25,7 +25,7 @@ export class ListingOrdersComponent implements OnInit {
       name: 'odilomar',
       items:'notebook , monitor',
       price: 10000.6,
-      data: '20/03/2020'
+      data: new Date()
     }
   ];
 

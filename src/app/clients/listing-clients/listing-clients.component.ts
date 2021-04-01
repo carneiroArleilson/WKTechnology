@@ -3,6 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { Line } from 'src/app/components/template/base/base.component';
 import { Router } from '@angular/router';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { cpf } from 'cpf-cnpj-validator';
+import * as EmailValidator from 'email-validator';
+
+const { isValid } = cpf;
 
 @Component({
   selector: 'app-listing-clients',
@@ -15,10 +19,17 @@ export class ListingClientsComponent implements OnInit {
   total = 0;
   items: Array<Line> = [];
   currentItem = ['id', 'name', 'cpf', 'ender', 'email', 'nasc', 'action'];
+  nasc = {
+    year: 0,
+    month: 0,
+    day: 0,
+  };
   product: Line = {
     id: 0,
     name: '',
-    price: 0,
+    cpf: '',
+    ender: '',
+    email: '',
   };
   rows = [
     {
@@ -27,7 +38,7 @@ export class ListingClientsComponent implements OnInit {
       cpf: '03309392201',
       ender: 'rua luiz antony',
       email: 'carneiroarleilson@gmail.com',
-      nasc: '13/06/1998',
+      nasc: new Date(),
     },
   ];
 
@@ -39,7 +50,7 @@ export class ListingClientsComponent implements OnInit {
 
   ngOnInit() {}
 
-  incluirCenario() {
+  incluirClient() {
 
     const sortedRows = this.rows.sort((a, b) => b.id - a.id);
     const newID = sortedRows[0].id + 1;
@@ -48,7 +59,36 @@ export class ListingClientsComponent implements OnInit {
     const cpf = this.product.cpf || '';
     const ender = this.product.ender || '';
     const email = this.product.email || '';
-    const nasc = this.product.nasc || '';
+    const nasc = new Date(`${this.nasc.year}/${this.nasc.month}/${this.nasc.day}/`) || new Date();
+
+    if(name === '') {
+      alert('Nome está vazio!');
+      return;
+    }
+    if(cpf === '') {
+      alert('CPF está vazio!');
+      return;
+    }
+    if(!isValid(cpf)) {
+      alert('CPF não é válido!');
+      return;
+    }
+    if(ender === '') {
+      alert('Endereço está vazio!');
+      return;
+    }
+    if(email === '') {
+      alert('Email está vazio!');
+      return;
+    }
+    if(!EmailValidator.validate(email)) {
+      alert('Email não é válido!');
+      return;
+    }
+    // if(nasc === '') {
+    //   alert('Data de Nascimento está vazio!');
+    //   return;
+    // }
 
     this.rows.push({
       name,

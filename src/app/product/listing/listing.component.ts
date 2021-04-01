@@ -41,7 +41,7 @@ export class ListingComponent implements OnInit {
 
   ngOnInit() {}
 
-  incluirCenario() {
+  incluirProduct() {
     const sortedRows = this.rows.sort((a, b) => b.id - a.id);
     const newID = sortedRows[0].id + 1;
 

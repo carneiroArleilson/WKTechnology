@@ -7,12 +7,12 @@ export interface Line {
   price?: number;
   name?: string;
   items?: string;
-  data?: string;
+  data?: Date;
   total?: number;
   cpf?: string;
   ender?: string;
   email?:string;
-  nasc?: string;
+  nasc?: Date;
 }
 
 @Component({

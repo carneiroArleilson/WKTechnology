@@ -37,18 +37,20 @@
           <input id="dateOfBirth" [(ngModel)]="product.ender" class="form-control" name="ender" ngbDatepicker #dp="ngbDatepicker">
         </div>
         <label for="dateOfBirth">Email</label>
-        <div class="input-group">
-          <input id="dateOfBirth" [(ngModel)]="product.email" class="form-control" type="email" name="email" ngbDatepicker #dp="ngbDatepicker">
+        <div class="input-group "  >
+          <input id="dateOfBirth" [(ngModel)]="product.email" class="form-control" placeholder="nome@email.com" type="email" name="email" ngbDatepicker #dp="ngbDatepicker" required >
         </div>
         <label for="dateOfBirth">Data de nascimento</label>
         <div class="input-group">
-          <input id="dateOfBirth" [(ngModel)]="product.nasc" class="form-control" type="date" placeholder="dd/mm/aaaa" name="nasc" ngbDatepicker #dp="ngbDatepicker">
+          <input id="dateOfBirth" [(ngModel)]="nasc" class="form-control" type="date" placeholder="dd/mm/aaaa" name="nasc" ngbDatepicker #dp="ngbDatepicker">
         </div>
       </div>
+
+      <button type="submit"  class="btn btn-outline-dark"  (click)="incluirClient()">Save</button>
     </form>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="incluirCenario()">Save</button>
-  </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit"  class="btn btn-outline-dark"  (click)="incluirClient()">Save</button>
+    </div>
 </ng-template>
 
