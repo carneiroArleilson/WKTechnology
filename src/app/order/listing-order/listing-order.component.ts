@@ -6,6 +6,14 @@ import { Line } from 'src/app/components/template/base/base.component';
 import { ClientsService } from 'src/app/service/clients.service';
 import { Subscription } from 'rxjs';
 
+interface NewOrder {
+  id: number;
+  name: string;
+  items: string;
+  data: Date;
+  price: number;
+}
+
 @Component({
   selector: 'app-listing-order',
   templateUrl: './listing-order.component.html',
@@ -18,8 +26,10 @@ export class ListingOrderComponent implements OnInit, OnDestroy {
   subscribe = new Subscription();
   currentItem = ['id', 'name', 'preço', 'action'];
   clients: string[] = [];
+  client: string = '';
 
   rows: Line[] = [];
+  newId = 0;
 
   constructor(
     private router: Router,
@@ -42,6 +52,11 @@ export class ListingOrderComponent implements OnInit, OnDestroy {
 
       this.clients = allClients as Array<string>;
     });
+
+    this.subscribe = this.orderService.getOrders().subscribe(orders => {
+      const orderAsLine = orders as Line[];
+      this.newId = orderAsLine.sort((a, b) => b.id - a.id)[0].id + 1;
+    });
   }
 
   ngOnDestroy() {
@@ -58,7 +73,15 @@ export class ListingOrderComponent implements OnInit, OnDestroy {
   }
 
   finish() {
-
+    const allProducts = this.rows.map(row => row.name);
+    const newOrder: NewOrder = {
+      id: this.newId,
+      items: allProducts.reduce((acc, cur) => `${acc}, ${cur}`) as string,
+      name: this.client,
+      price: this.total,
+      data: new Date(),
+    };
+    this.orderService.addOrder(newOrder);
     this.toProducts();
   }
 }

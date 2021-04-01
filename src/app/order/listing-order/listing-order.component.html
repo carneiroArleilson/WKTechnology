@@ -6,7 +6,7 @@
     </div>
     <div class="d-flex justify-content-between" >
       <div class="d-flex" >
-        <input list="clients" >
+        <input list="clients" [(ngModel)]="client">
           <datalist id="clients" >
             <option *ngFor="let client of clients" [value]="client" > {{client}} </option>
           </datalist>
