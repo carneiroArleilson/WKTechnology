@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ListingClientsComponent } from './clients/listing-clients/listing-clients.component';
 import { ListingOrderComponent } from './order/listing-order/listing-order.component';
+import { ListingOrdersComponent } from './order/listing-orders/listing-orders.component';
 import { ListingComponent } from './product/listing/listing.component';
 
 const routes: Routes = [
@@ -21,6 +23,14 @@ const routes: Routes = [
   {
     path: 'order',
     component: ListingOrderComponent,
+  },
+  {
+    path: 'orders',
+    component: ListingOrdersComponent,
+  },
+  {
+    path: 'clients',
+    component: ListingClientsComponent,
   },
 ];
 

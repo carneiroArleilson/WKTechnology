@@ -8,6 +8,9 @@ import { ListingComponent } from './product/listing/listing.component';
 import { ListingOrderComponent } from './order/listing-order/listing-order.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { MenuComponent } from './components/template/menu/menu.component';
+import { ListingOrdersComponent } from './order/listing-orders/listing-orders.component';
+import { ListingClientsComponent } from './clients/listing-clients/listing-clients.component';
 
 
 
@@ -16,7 +19,10 @@ import { FormsModule } from '@angular/forms';
     AppComponent,
     BaseComponent,
     ListingComponent,
-    ListingOrderComponent
+    ListingOrderComponent,
+    MenuComponent,
+    ListingOrdersComponent,
+    ListingClientsComponent
   ],
   imports: [
     BrowserModule,

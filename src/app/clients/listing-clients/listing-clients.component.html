@@ -1,6 +1,6 @@
 <div class="m-5">
   <div class="d-flex justify-content-between">
-    <p class="m-0 fs-4">Produtos</p>
+    <p class="m-0 fs-4">Clientes</p>
     <button class="btn" (click)="open(content)" data-toggle="modal" data-target="#exampleModal">
       <i class="material-icons">queue</i>
     </button>
@@ -9,19 +9,9 @@
   <app-base
     [item]="currentItem"
     [row]="rows"
-    (newItemEvent)="addItem($event)"
+    (newItemEvent)="addItem()"
   ></app-base>
-  <div class="d-flex justify-content-between">
-    <h2>Total: {{ total }}</h2>
-    <!-- <button><a href="" routerLink="/order" routerLinkActive="selected" >Comprar</a></button> -->
-    <button
-      class="btn btn-primary"
-      [ngClass]="{ disabled: items.length === 0 }"
-      (click)="order()"
-    >
-      Comprar
-    </button>
-  </div>
+
 </div>
 
 <ng-template #content let-modal>
@@ -34,13 +24,25 @@
   <div class="modal-body">
     <form>
       <div class="form-group">
-        <label for="dateOfBirth">nome do produto</label>
+        <label for="dateOfBirth">Nome do cliente</label>
         <div class="input-group">
           <input id="dateOfBirth" [(ngModel)]="product.name" class="form-control" name="name" ngbDatepicker #dp="ngbDatepicker">
         </div>
-        <label for="dateOfBirth">preço</label>
+        <label for="dateOfBirth">cpf</label>
         <div class="input-group">
-          <input id="dateOfBirth" [(ngModel)]="product.price" class="form-control" placeholder="R$" name="price" ngbDatepicker #dp="ngbDatepicker">
+          <input id="dateOfBirth" [(ngModel)]="product.cpf" class="form-control" name="cpf" ngbDatepicker #dp="ngbDatepicker">
+        </div>
+        <label for="dateOfBirth">Endereço</label>
+        <div class="input-group">
+          <input id="dateOfBirth" [(ngModel)]="product.ender" class="form-control" name="ender" ngbDatepicker #dp="ngbDatepicker">
+        </div>
+        <label for="dateOfBirth">Email</label>
+        <div class="input-group">
+          <input id="dateOfBirth" [(ngModel)]="product.email" class="form-control" type="email" name="email" ngbDatepicker #dp="ngbDatepicker">
+        </div>
+        <label for="dateOfBirth">Data de nascimento</label>
+        <div class="input-group">
+          <input id="dateOfBirth" [(ngModel)]="product.nasc" class="form-control" type="date" placeholder="dd/mm/aaaa" name="nasc" ngbDatepicker #dp="ngbDatepicker">
         </div>
       </div>
     </form>

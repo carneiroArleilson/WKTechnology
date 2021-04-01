@@ -1,0 +1,15 @@
+<div class="m-5">
+  <div class="d-flex justify-content-between">
+    <p class="m-0 fs-4">Pedidos</p>
+  </div>
+
+  <app-base
+    [item]="currentItem"
+    [row]="rows"
+    (newItemEvent)="addItem()"
+  ></app-base>
+  <div class="d-flex justify-content-between">
+    <!-- <button><a href="" routerLink="/order" routerLinkActive="selected" >Comprar</a></button> -->
+  </div>
+</div>
+

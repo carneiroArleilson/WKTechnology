@@ -6,6 +6,13 @@ export interface Line {
   selected?: boolean;
   price?: number;
   name?: string;
+  items?: string;
+  data?: string;
+  total?: number;
+  cpf?: string;
+  ender?: string;
+  email?:string;
+  nasc?: string;
 }
 
 @Component({

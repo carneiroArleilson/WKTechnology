@@ -13,10 +13,32 @@
       </td>
       <td *ngIf="line.name" >
         {{ line.name }}
+      </td>
+      <td *ngIf="line.cpf" >
+        {{ line.cpf }}
+      </td>
+      <td *ngIf="line.items" >
+          {{ line.items }}
+      </td>
+      <td *ngIf="line.ender" >
+        {{ line.ender }}
+      </td>
+      <td *ngIf="line.email" >
+        {{ line.email }}
+      </td>
       <td *ngIf="line.price" >
         {{ line.price }}
       </td>
-      <td>
+      <td *ngIf="line.total" >
+        {{ line.price }}
+      </td>
+      <td *ngIf="line.nasc" >
+        {{ line.nasc }}
+      </td>
+      <td *ngIf="line.data" >
+        {{ line.data }}
+      </td>
+      <td >
         <button
           type="button"
           class="btn"
