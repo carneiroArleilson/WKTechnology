@@ -12,9 +12,7 @@ export class OrdersService {
   ) {}
 
   getOrders() {
-    return this.storeService.getObservable(
-      this.firebaseStore.collection('orders')
-    );
+    return this.firebaseStore.collection('orders').valueChanges();
   }
 
   addOrder(order: any) {
